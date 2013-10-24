@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ext组件Button</title>
+	<!-- extjs -->
+	<link rel="stylesheet" type="text/css" href="../ext-4.2.1.883/resources/css/ext-all-neptune.css">
+	<!--<script type="text/javascript" src="../extjs/ext-all.js"></script>-->
+	<script type="text/javascript" src="../ext-4.2.1.883/ext-all-debug-w-comments.js"></script>
+	<script type="text/javascript" src="../ext-4.2.1.883/locale/ext-lang-zh_CN.js"></script>
+	<style type="text/css" >
+	body{padding-left:5px;}
+	</style>
+</head>
+<body>
+	<script  type="text/javascript">
+	Ext.require('Ext.*');
+		// button 常用组件
+		Ext.onReady(function() {
+		
+				var win = Ext.create('Ext.window.Window', {
+					title: '常用window',
+					//headerPosition: 'left',  // 设置 header 显示位置
+					height: 200,
+					width: 400,
+					layout: 'fit',
+					y:10,
+					header: {
+						titlePosition: 2,
+						titleAlign: 'center'
+					},
+					items: [{
+						title: 'panel标题',
+						html: '显示内容',
+						header : false
+					}],
+					buttons:[{
+						text:'提交(up)',
+						handler:function(){
+							Ext.Msg.alert('提显信息',this.up('window').title);  // 通过 提交按钮找到 window 元素
+						}
+					},{
+						text:'取消',
+						action:'cancel',
+						handler:function(){
+							Ext.Msg.alert('提显信息','请点击（提显down）显示内容');  // 通过 提交按钮找到 window 元素
+						}
+					}]
+				});
+				
+				// 显示
+				win.show();
+				
+			    Ext.create('Ext.Button', {
+					text: '提显down',  // 记的不要忘记了 
+					renderTo: Ext.getBody(),
+					handler: function() { //  用的比较的属性
+						Ext.Msg.alert('提显信息',win.down('button[action=cancel]').text); //使用 button 按钮找到 window 组件然后去查找 button 中的 action = cancel 的组件
+					}
+				});
+			   
+		});
+	</script>
+	<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=f50865b2598688abcae47cca8ae48b5c1ea26a45194c640071eefdd7212d3a2e"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="extjs 技术交流" title="extjs 技术交流"></a>
+	<a href="../ext-4.2.1.883/docs/index.html#!/example/build/KitchenSink/ext-theme-neptune/#basic-buttons"><h3>doc</h3></a>
+	
+	<a href="http://blog.mttqq.com"><h3>犸特头-Extjs4更多学习请加QQ群）311176787</h3></a>
+</body>
+</html>

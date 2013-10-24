@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>extjs-from</title>
+	<!-- extjs -->
+	<link rel="stylesheet" type="text/css" href="../ext-4.2.1.883/resources/css/ext-all-neptune.css">
+	<!--<script type="text/javascript" src="../extjs/ext-all.js"></script>-->
+	<script type="text/javascript" src="../ext-4.2.1.883/ext-all-debug-w-comments.js"></script>
+	<script type="text/javascript" src="../ext-4.2.1.883/locale/ext-lang-zh_CN.js"></script>
+	<style type="text/css" >
+	body{padding-left:5px;}
+	</style>
+</head>
+<body>
+	<script  type="text/javascript">
+
+		// 1、 步骤导入库文件
+		Ext.require([
+			'Ext.form.*',
+			'Ext.tip.QuickTipManager'
+		]);
+		
+		Ext.onReady(function() {
+		
+			// 2、步骤设置提示
+		    Ext.tip.QuickTipManager.init();
+			
+			// 3、步骤添加验证
+			Ext.apply(Ext.form.field.VTypes, {
+
+				daterange: function(val, field) { // 调用 daterange 
+					var date = field.parseDate(val);
+
+					if (!date) {
+						return false;
+					}
+					if (field.startDateField && (!this.dateRangeMax || (date.getTime() != this.dateRangeMax.getTime()))) {
+						var start = field.up('form').down('#' + field.startDateField);
+						start.setMaxValue(date);
+						start.validate();
+						this.dateRangeMax = date;
+					}
+					else if (field.endDateField && (!this.dateRangeMin || (date.getTime() != this.dateRangeMin.getTime()))) {
+						var end = field.up('form').down('#' + field.endDateField);
+						end.setMinValue(date);
+						end.validate();
+						this.dateRangeMin = date;
+					}
+					return true;
+				},
+
+				daterangeText: '开始日期必须小于结束日期'  // 验证显示文字
+
+			});
+			
+			// 4、步骤添加 form 和 form 其他组件
+			var dr = Ext.create('Ext.form.Panel', {
+				renderTo: 'dr',
+				frame: true,
+				title: '时间比较',
+				bodyPadding: '5 5 0',
+				width: 350,
+				fieldDefaults: {
+					labelWidth: 125,
+					msgTarget: 'side',
+					autoFitErrors: false
+				},
+				defaults: {
+					width: 300
+				},
+				defaultType: 'datefield',
+				items: [{
+					fieldLabel: '开始日期',
+					name: 'startdt',
+					itemId: 'startdt',// 开始时间ID
+					vtype: 'daterange',	// 调用的 验证方法
+					endDateField: 'enddt' // 设置结束时间
+				}, {
+					fieldLabel: '结束日期',
+					name: 'enddt',
+					itemId: 'enddt', // 结束时间ID
+					vtype: 'daterange', // 调用的 验证方法
+					startDateField: 'startdt' // 设置开始时间
+				}]
+			});
+		
+		});
+	</script>
+	
+	<a href="../ext-4.2.1.883/examples/panel/panel.html"><h3>examples</h3></a>
+	<a href="../ext-4.2.1.883/docs/index.html#!/api/Ext.panel.Panel"><h3>doc</h3></a>
+	
+	<a href="http://blog.mttqq.com"><h3>犸特头-Extjs4更多学习</h3></a>
+	<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=f50865b2598688abcae47cca8ae48b5c1ea26a45194c640071eefdd7212d3a2e"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="extjs 技术交流" title="extjs 技术交流"></a>
+	
+	<div id="dr"></div>
+</body>
+</html>

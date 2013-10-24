@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ext组件Button</title>
+	<!-- extjs -->
+	<link rel="stylesheet" type="text/css" href="../ext-4.2.1.883/resources/css/ext-all-neptune.css">
+	<!--<script type="text/javascript" src="../extjs/ext-all.js"></script>-->
+	<script type="text/javascript" src="../ext-4.2.1.883/ext-all-debug-w-comments.js"></script>
+	<script type="text/javascript" src="../ext-4.2.1.883/locale/ext-lang-zh_CN.js"></script>
+	<style type="text/css" >
+	body{padding-left:5px;}
+	</style>
+</head>
+<body>
+	<script  type="text/javascript">
+		// button 常用组件
+		Ext.onReady(function() {
+			    Ext.create('Ext.Button', {
+				text: '点击',  // 记的不要忘记了 
+				renderTo: Ext.getBody(),
+				handler: function() { //  用的比较的属性
+					alert('你点击了，Button 组件');
+				}
+				//action: 'save'  extjs4 版本后多的内容
+				// 通过 up('buton [action=xxxx]');down('buton [action=xxxx]');
+				// 'cityedit button[action=add]': {
+                //click: this.addUser
+				//}
+			});
+		});
+	</script>
+	<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=f50865b2598688abcae47cca8ae48b5c1ea26a45194c640071eefdd7212d3a2e"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="extjs 技术交流" title="extjs 技术交流"></a>
+	<a href="../ext-4.2.1.883/docs/index.html#!/example/build/KitchenSink/ext-theme-neptune/#basic-buttons"><h3>doc</h3></a>
+	
+	<a href="http://blog.mttqq.com"><h3>犸特头-Extjs4更多学习请加QQ群）311176787</h3></a>
+</body>
+</html>

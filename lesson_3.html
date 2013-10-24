@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>extjs-Window</title>
+	<!-- extjs -->
+	<link rel="stylesheet" type="text/css" href="../ext-4.2.1.883/resources/css/ext-all-neptune.css">
+	<!--<script type="text/javascript" src="../extjs/ext-all.js"></script>-->
+	<script type="text/javascript" src="../ext-4.2.1.883/ext-all-debug-w-comments.js"></script>
+	<script type="text/javascript" src="../ext-4.2.1.883/locale/ext-lang-zh_CN.js"></script>
+	<style type="text/css" >
+	body{padding-left:5px;}
+	</style>
+</head>
+<body>
+	<script  type="text/javascript">
+		// 第二个例子
+		Ext.onReady(function() {
+			    var win2 = Ext.create('widget.window', {
+				height: 200,
+				width: 400,
+				x: 450,
+				y: 450,
+				title: 'Constraining Window, plain: true',
+				closable: false,
+				plain: true,
+				layout: 'fit',
+				items: [constrainedWin = Ext.create('Ext.Window', {
+					title: 'Constrained Window',
+					width: 200,
+					height: 100,
+
+					// Constraining will pull the Window leftwards so that it's within the parent Window
+					x: 1000,
+					y: 20,
+					constrain: true,
+					layout: 'fit',
+					items: {
+						border: false
+					}
+				}), constrainedWin2 = Ext.create('Ext.Window', {
+					title: 'Header-Constrained Win',
+					width: 200,
+					height: 100,
+					x: 120,
+					y: 120,
+					constrainHeader: true,
+					layout: 'fit',
+					items: {
+						border: false
+					}
+				}),{
+					border: false
+				}]
+			});
+			win2.show();
+			constrainedWin.show();
+			constrainedWin2.show();
+
+		});
+	</script>
+	
+	<a href="../ext-4.2.1.883/examples/window/window.html"><h3>examples</h3></a>
+	<a href="../ext-4.2.1.883/docs/index.html#!/api/Ext.window.Window"><h3>doc</h3></a>
+	
+	<a href="http://blog.mttqq.com"><h3>犸特头-Extjs4更多学习请加QQ群）311176787</h3></a>
+</body>
+</html>

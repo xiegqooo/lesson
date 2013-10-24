@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>extjs-Window</title>
+	<!-- extjs -->
+	<link rel="stylesheet" type="text/css" href="../ext-4.2.1.883/resources/css/ext-all-neptune.css">
+	<!--<script type="text/javascript" src="../extjs/ext-all.js"></script>-->
+	<script type="text/javascript" src="../ext-4.2.1.883/ext-all-debug-w-comments.js"></script>
+	<script type="text/javascript" src="../ext-4.2.1.883/locale/ext-lang-zh_CN.js"></script>
+	<style type="text/css" >
+	body{padding-left:5px;}
+	</style>
+</head>
+<body>
+	<script  type="text/javascript">
+		// 第一个例子
+		Ext.onReady(function() {
+			Ext.create('Ext.window.Window', {
+				title: '常用window',
+				//headerPosition: 'left',  // 设置 header 显示位置
+				height: 200,
+				width: 400,
+				layout: 'fit',
+				y:10,
+				header: {
+                    titlePosition: 2,
+                    titleAlign: 'center'
+                },
+				items: [{
+					title: 'panel标题',
+					html: '显示内容',
+					header : false
+				}, Ext.create('Ext.grid.Panel', {
+					title: 'AMF3 Pangrams',
+					height: 350,
+					width: 700,
+					columns: [
+						{ text: 'Language', dataIndex: 'language', width: 130 },
+						{ text: 'Pangram', dataIndex: 'text', flex: 1 }
+					]
+				})],
+				buttons:[
+					{text:'提交',hander:function(){alert(1);}}
+				]
+			}).show();
+
+		});
+	</script>
+	
+	<a href="../ext-4.2.1.883/examples/window/window.html"><h3>examples</h3></a>
+	<a href="../ext-4.2.1.883/docs/index.html#!/api/Ext.window.Window"><h3>doc</h3></a>
+	
+	<a href="http://blog.mttqq.com"><h3>犸特头-Extjs4更多学习请加QQ群）311176787</h3></a>
+</body>
+</html>

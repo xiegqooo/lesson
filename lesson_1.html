@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>extjs-panel</title>
+	<!-- extjs -->
+	<link rel="stylesheet" type="text/css" href="../ext-4.2.1.883/resources/css/ext-all-neptune.css">
+	<!--<script type="text/javascript" src="../extjs/ext-all.js"></script>-->
+	<script type="text/javascript" src="../ext-4.2.1.883/ext-all-debug-w-comments.js"></script>
+	<script type="text/javascript" src="../ext-4.2.1.883/locale/ext-lang-zh_CN.js"></script>
+	<style type="text/css" >
+	body{padding-left:5px;}
+	</style>
+</head>
+<body>
+	<script  type="text/javascript">
+		
+		Ext.onReady(function() {
+			//  第一个panel 
+			Ext.create('Ext.panel.Panel', {
+				width: 200,
+				height: 200,
+				renderTo: document.body,
+				title: 'A Panel',
+				tools: [{
+					type: 'help',
+					callback: function() {
+						// show help here
+					}
+				}, {
+					itemId: 'refresh',
+					type: 'refresh',
+					hidden: true,
+					callback: function() {
+						// do refresh
+					}
+				}, {
+					type: 'search',
+					callback: function (panel) {
+						// do search
+						panel.down('#refresh').show();
+					}
+				}]
+			});
+			// 第二个panel
+			var pp = Ext.create('Ext.panel.Panel', {
+				title: '基本panel',
+				header : false,  // 显示 header 默认 true 
+				collapsible:true, // 可折叠的,默认 false/true 显示
+				bodyStyle: { // 修改  panel 中的 body 样式 /** 注意：bodystyle : 可以是 'padding:5px' 或{padding:10px,background:#ffc} */
+					background: '#ffc',
+					padding: '10px'
+				},
+				border: false,  // 细边框 默认：true  
+				//frame: true,  // 粗边框 默认：false /** 注意：border 跟 frame 只能设置一个。   */
+				height: 180,
+				autoScroll: true, // 滚动条 默认：false /** 注意：autoScroll 是与 height 有关所以一定要设置 height */
+				width:400,
+				html : '<p>其实我是一Ext.panel,也有滚动条</p>',
+				renderTo: document.body
+			});
+		
+		});
+	</script>
+	
+	<a href="../ext-4.2.1.883/examples/panel/panel.html"><h3>examples</h3></a>
+	<a href="../ext-4.2.1.883/docs/index.html#!/api/Ext.panel.Panel"><h3>doc</h3></a>
+	
+	<a href="http://blog.mttqq.com"><h3>犸特头-Extjs4更多学习</h3></a>
+</body>
+</html>
