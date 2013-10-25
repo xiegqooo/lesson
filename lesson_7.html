@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>extjs-Ext.form.field.Text（使用）</title>
+	<!-- extjs -->
+	<link rel="stylesheet" type="text/css" href="../ext-4.2.1.883/resources/css/ext-all-neptune.css">
+	<!--<script type="text/javascript" src="../extjs/ext-all.js"></script>-->
+	<script type="text/javascript" src="../ext-4.2.1.883/ext-all-debug-w-comments.js"></script>
+	<script type="text/javascript" src="../ext-4.2.1.883/locale/ext-lang-zh_CN.js"></script>
+	<style type="text/css" >
+	body{padding-left:5px;}
+	</style>
+</head>
+<body>
+	<script  type="text/javascript">
+
+		// 1、 步骤导入库文件
+		Ext.require([
+			'Ext.form.*',
+			'Ext.tip.QuickTipManager'
+		]);
+		
+		Ext.onReady(function() {
+		
+			// 2、步骤设置提示
+		    Ext.tip.QuickTipManager.init();
+			
+			// 3、步骤添加 form 和 form 其他组件
+			Ext.create('Ext.form.Panel', {
+				title: '联系信息',
+				width: 300,
+				bodyPadding: 10,
+				renderTo: Ext.getBody(),
+				defaults: {
+					labelAlign :'right', // fieldlLabel 显示位置
+					labelWidth : 50	// fieldLable 距离
+				},
+				items: [{
+					xtype: 'textfield',
+					name: 'name',
+					fieldLabel: '名称',
+					emptyText : '犸特头', // 没有输入的提示
+					allowBlank: false  // 必须填写，不成为空
+				}, {
+					xtype: 'textfield',
+					name: 'email',
+					fieldLabel: '邮箱',
+					emptyText : 'blog@mttqq.com', // 没有输入的提示
+					vtype: 'email'  // 必须填写，格式为 email
+				}, {
+					xtype: 'textfield',
+					name: 'password',
+					fieldLabel: '密码',
+					inputType : 'password' ,// 设置显示类型 (radio, text, password, file) 和 html5 中的 (url, email, etc)
+					manLength : 8,
+					allowBlank: false 
+				}],
+				buttons:[
+					{text:'提交',handler:function(){alert(0);}}
+				]
+			});
+		
+		});
+	</script>
+	
+	<a href="../ext-4.2.1.883/examples/panel/panel.html"><h3>examples</h3></a>
+	<a href="../ext-4.2.1.883/docs/index.html#!/api/Ext.form.Panel"><h3>doc</h3></a>
+	
+	<a href="http://blog.mttqq.com"><h3>犸特头-Extjs4更多学习</h3></a>
+	<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=f50865b2598688abcae47cca8ae48b5c1ea26a45194c640071eefdd7212d3a2e"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="extjs 技术交流" title="extjs 技术交流"></a>
+	
+	<div id="dr"></div>
+</body>
+</html>
