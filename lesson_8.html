@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>Ext.form.field.File（xtype: filefield, fileuploadfield）-犸特头</title>
+	<!-- extjs -->
+	<link rel="stylesheet" type="text/css" href="../ext-4.2.1.883/resources/css/ext-all-neptune.css">
+	<!--<script type="text/javascript" src="../extjs/ext-all.js"></script>-->
+	<script type="text/javascript" src="../ext-4.2.1.883/ext-all-debug-w-comments.js"></script>
+	<script type="text/javascript" src="../ext-4.2.1.883/locale/ext-lang-zh_CN.js"></script>
+	<style type="text/css" >
+	body{padding-left:5px;}
+	</style>
+</head>
+<body>
+	<script  type="text/javascript">
+
+		// 1、 步骤导入库文件
+		Ext.require([
+			'Ext.form.*',
+			'Ext.tip.QuickTipManager'
+		]);
+		
+		Ext.onReady(function() {
+		
+			// 2、步骤设置提示
+		    Ext.tip.QuickTipManager.init();
+			
+			Ext.create('Ext.form.Panel', {
+				title: '上传文件',
+				width: 400,
+				bodyPadding: 10,
+				frame: true,
+				renderTo: Ext.getBody(),
+				items: [{
+					xtype: 'filefield',
+					name: 'photo-path', // 服务端获取 “名称”
+					afterLabelTextTpl:  '<span style="color:red;font-weight:bold" data-qtip="必需填写">*</span>',
+					fieldLabel: '文件',
+					labelWidth: 50,
+					msgTarget: 'side', //  提示 文字的位置 \title\under\none\side\[element id] 
+					allowBlank: false,
+					anchor: '100%',
+					buttonText: '选择文件'
+				}],
+
+				buttons: [{
+					text: '上传',
+					handler: function() {
+						var form = this.up('form').getForm();
+						if(form.isValid()){ // form 验证
+							form.submit({ // 提交
+								url: 'file-upload.php',
+								waitMsg: '正在上传...',
+								success: function(fp, o) {
+									Ext.Msg.alert('上传成功', '您的文件 "' + o.result.fileName + '" 成功的保存服务器上...');
+								}
+							});
+						}
+					}
+				}]
+			});
+		});
+	</script>
+	
+	<a href="../ext-4.2.1.883/docs/index.html#!/api/Ext.form.field.File"><h3>doc</h3></a>
+	
+	<a href="http://blog.mttqq.com"><h3>犸特头-Extjs4更多学习</h3></a>
+	<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=f50865b2598688abcae47cca8ae48b5c1ea26a45194c640071eefdd7212d3a2e"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="extjs 技术交流" title="extjs 技术交流"></a>
+	
+</body>
+</html>
