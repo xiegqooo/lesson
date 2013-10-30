@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>Ext.form.field.File（xtype: filefield, fileuploadfield）-犸特头</title>
+	<!-- extjs -->
+	<link rel="stylesheet" type="text/css" href="../ext-4.2.1.883/resources/css/ext-all-neptune.css">
+	<!--<script type="text/javascript" src="../extjs/ext-all.js"></script>-->
+	<script type="text/javascript" src="../ext-4.2.1.883/ext-all-debug-w-comments.js"></script>
+	<script type="text/javascript" src="../ext-4.2.1.883/locale/ext-lang-zh_CN.js"></script>
+	<style type="text/css" >
+	body{padding-left:5px;}
+	</style>
+</head>
+<body>
+	<script  type="text/javascript">
+
+		// 1、 步骤导入库文件
+		Ext.require([
+			'Ext.form.*',
+			'Ext.tip.QuickTipManager'
+		]);
+		
+		Ext.onReady(function() {
+		
+			// 2、步骤设置提示
+		    Ext.tip.QuickTipManager.init();
+			
+			Ext.create('Ext.form.Panel', {
+				title: '上传文件',
+				width: 400,
+				bodyPadding: 10,
+				frame: true,
+				defaults :{ //统一设置表单字段默认属性  
+					//autoFitErrors : false,//展示错误信息时是否自动调整字段组件宽度  
+					labelSeparator :'--:--',//分隔符  
+					labelWidth : 50,//标签宽度  
+					width : 150,//字段宽度  
+					allowBlank : false,//是否允许为空  
+					blankText : '不允许为空',  
+					labelAlign : 'rith',//标签对齐方式  
+					/*labelAlign : 'left', 
+					labelAlign : 'top',,*/
+					msgTarget :'qtip'          //显示一个浮动的提示信息  
+					/*msgTarget :'title'       //显示一个浏览器原始的浮动提示信息  
+					msgTarget :'under'       //在字段下方显示一个提示信息  
+					msgTarget :'side'        //在字段的右边显示一个提示信息  
+					msgTarget :'none'        //不显示提示信息  
+					msgTarget :'errorMsg'    //在errorMsg元素内显示提示信息  */
+				},
+				renderTo: Ext.getBody(),
+				items: [{
+					xtype     : 'textareafield',
+					grow      : true,
+					name      : 'message',
+					fieldLabel: '描述',
+					anchor    : '100%'
+				}]
+			});
+		});
+	</script>
+	
+	<a href="../ext-4.2.1.883/docs/index.html#!/api/Ext.form.field.File"  target="_blank"><h3>doc</h3></a>
+	
+	<a href="http://blog.mttqq.com"  target="_blank"><h3>犸特头-Extjs4更多学习</h3></a>
+	<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=f50865b2598688abcae47cca8ae48b5c1ea26a45194c640071eefdd7212d3a2e"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="extjs 技术交流" title="extjs 技术交流"></a>
+	
+</body>
+</html>
