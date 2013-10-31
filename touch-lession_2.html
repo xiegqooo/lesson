@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ext.navigation.View-犸特头</title>
+    <link rel="stylesheet" type="text/css" href="../touch-2.3.0/resources/css/sencha-touch.css">
+    <script id="microloader" type="text/javascript" src="../touch-2.3.0/sencha-touch-all-debug.js"></script>
+</head>
+    <style type="text/css">
+        a {
+            text-decoration: none;
+        }
+    </style>
+    <script>
+        Ext.require("Ext.MessageBox");
+        Ext.application({
+            name: "oa",
+            launch: function() {
+				var view = Ext.Viewport.add( {
+					xtype:'navigationview',
+					//useTitleForBackButtonText : true ,
+					defaultBackButtonText : '返回',
+					navigationBar:{ // 导航按钮
+						items: [{
+							xtype: 'button',
+							id: 'editButton',
+							text: '编辑',
+							align: 'right',
+							handler: function() {
+								Ext.Msg.alert('点击操作', '犸特头<br/>extjs学习交流(QQ群):311176787 ', Ext.emptyFn);
+							},
+							hideAnimation: Ext.os.is.Android ? false : {
+								type: 'fadeOut',
+								duration: 200
+							},
+							showAnimation: Ext.os.is.Android ? false : {
+								type: 'fadeIn',
+								duration: 200
+							}
+						}]
+					},
+					//navigationBar : false,
+					// 初次加载时起码有一面板，可以接下来的跳转。
+					items: [{
+						 // 可以与有 title 配置项
+						title : '<h3>犸特头-http://blog.mttqq.com/</h3>',
+					    padding: 10,
+					    // 在第一个显示的面板中先加入一个按钮吧
+						items: [{
+							html : '犸特头-extjs学习交流(QQ群):311176787 '
+						},{
+							xtype: 'button',
+							text: '进入',
+							handler: function() {
+								// 单击这个按钮，就进入到下面这个新的面板。
+								view.push({
+									//this one also hasa title
+									title: '第二个视图',
+									padding: 10,
+									
+									// 如法炮制，该面板也要一个按钮
+									items: [{
+										html : '犸特头-extjs学习交流(QQ群):311176787 ',
+									},{
+										xtype:'button',
+										text: '上个视图',
+										handler:function() {
+											// 当按下这个按钮，就不要这个面板了，退到上一次哪里的地方。
+										   view.pop();
+										}
+									}]
+								});
+							}
+						}]
+					}]
+				});
+            }
+        });
+
+    </script>
+<body>
+
+</body>
+</html>
