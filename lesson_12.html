@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>Ext.form.field.NumberView(xtype: numberfield0-犸特头</title>
+	<!-- extjs -->
+	<link rel="stylesheet" type="text/css" href="../ext-4.2.1.883/resources/css/ext-all-neptune.css">
+	<!--<script type="text/javascript" src="../extjs/ext-all.js"></script>-->
+	<script type="text/javascript" src="../ext-4.2.1.883/ext-all-debug-w-comments.js"></script>
+	<script type="text/javascript" src="../ext-4.2.1.883/locale/ext-lang-zh_CN.js"></script>
+	<style type="text/css" >
+	body{padding-left:5px;}
+	</style>
+</head>
+<body>
+	<script  type="text/javascript">
+
+		// 1、 步骤导入库文件
+		Ext.require([
+			'Ext.form.*',
+		]);
+
+		Ext.onReady(function() {
+
+			Ext.create('Ext.form.Panel', {
+				title: '走下楼层',
+				width: 300,
+				bodyPadding: 10,
+				renderTo: Ext.getBody(),
+				items: [{
+					xtype: 'numberfield',
+					anchor: '100%',
+					name: 'bottles',
+					fieldLabel: '当前楼层',
+					value: 99,
+					maxValue: 99,
+					minValue: 0,
+				    // 隐藏设置 ，注意 
+					hideTrigger: true, // 隐藏右边组件
+					keyNavEnabled: false,  // 键盘 up down 快捷键失效
+					mouseWheelEnabled: false, // 鼠标 失效					
+				    listeners: {
+						change: function(field, value) {
+							value = parseInt(value, 10);
+							field.setValue(value);
+						},
+						spinup : function(field,e){
+							var old = field.getValue();
+							var value = (old+2);
+							field.setValue((old+2));
+						}
+					}
+				}],
+				buttons: [{
+					text: '往楼下走一层',
+					handler: function() {
+						this.up('form').down('[name=bottles]').spinDown();
+					}
+				},{
+					text: '快速上三层楼',
+					handler: function() {
+						this.up('form').down('[name=bottles]').spinUp();
+					}
+				}]
+			});
+		});
+	</script>
+
+	<a href="../ext-4.2.1.883/docs/index.html#!/api/Ext.form.field.Number"  target="_blank"><h3>doc</h3></a>
+
+	<a href="http://blog.mttqq.com"  target="_blank"><h3>犸特头-Extjs4更多学习</h3></a>
+	<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=f50865b2598688abcae47cca8ae48b5c1ea26a45194c640071eefdd7212d3a2e"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="extjs 技术交流" title="extjs 技术交流"></a>
+
+</body>
+</html>
