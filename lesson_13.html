@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<title>Ext.form.field.NumberView(xtype: numberfield)-犸特头</title>
+	<title>Ext.form.field.HiddenView(xtype: hiddenfield, hidden)-犸特头</title>
 	<!-- extjs -->
 	<link rel="stylesheet" type="text/css" href="../ext-4.2.1.883/resources/css/ext-all-neptune.css">
 	<!--<script type="text/javascript" src="../extjs/ext-all.js"></script>-->
@@ -23,50 +23,62 @@
 		Ext.onReady(function() {
 
 			Ext.create('Ext.form.Panel', {
-				title: '走下楼层',
-				width: 300,
-				bodyPadding: 10,
-				renderTo: Ext.getBody(),
+				title: '表单',
 				items: [{
-					xtype: 'numberfield',
-					anchor: '100%',
-					name: 'bottles',
-					fieldLabel: '当前楼层',
-					value: 99,
-					maxValue: 99,
-					minValue: 0,
-				    // 隐藏设置 ，注意 
-					hideTrigger: true, // 隐藏右边组件
-					keyNavEnabled: false,  // 键盘 up down 快捷键失效
-					mouseWheelEnabled: false, // 鼠标 失效					
-				    listeners: {
-						change: function(field, value) {
-							value = parseInt(value, 10);
-							field.setValue(value);
-						},
-						spinup : function(field,e){
-							var old = field.getValue();
-							var value = (old+2);
-							field.setValue((old+2));
-						}
+					xtype: 'textfield',
+					fieldLabel: '文本字段',
+					name: 'text_field',
+					value: '文本字段值'
+				}, {
+					xtype: 'hiddenfield',
+					name: 'hidden_field_1',
+					value: '文本字段值2'
+				}],
+
+				buttons: [{
+					text: '提交',
+					handler: function() {
+						this.up('form').getForm().submit({
+							params: {
+								hidden_field_2: '文本字段值3'
+							}
+						});
 					}
 				}],
-				buttons: [{
-					text: '往楼下走一层',
-					handler: function() {
-						this.up('form').down('[name=bottles]').spinDown();
-					}
-				},{
-					text: '快速上三层楼',
-					handler: function() {
-						this.up('form').down('[name=bottles]').spinUp();
-					}
-				}]
+				renderTo: Ext.getBody()
 			});
+/*			
+			new Ext.form.Panel({
+				title: '表单',
+				items: [{
+					xtype: 'textfield',
+					fieldLabel: '文本字段',
+					name: 'text_field',
+					value: '文本字段值'
+				}, {
+					xtype: 'hiddenfield',
+					name: 'hidden_field_1',
+					value: '文本字段值2'
+				}],
+
+				buttons: [{
+					text: '提交',
+					handler: function() {
+						this.up('form').getForm().submit({
+							params: {
+								hidden_field_2: '文本字段值3'
+							}
+						});
+					}
+				}],
+				renderTo: Ext.getBody()
+			});
+*/
 		});
+
 	</script>
 
-	<a href="../ext-4.2.1.883/docs/index.html#!/api/Ext.form.field.Number"  target="_blank"><h3>doc</h3></a>
+	<a href="../ext-4.2.1.883/docs/index.html#!/api/Ext.form.field.Hidden"  target="_blank"><h3>doc</h3></a>
 
 	<a href="http://blog.mttqq.com"  target="_blank"><h3>犸特头-Extjs4更多学习</h3></a>
 	<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=f50865b2598688abcae47cca8ae48b5c1ea26a45194c640071eefdd7212d3a2e"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="extjs 技术交流" title="extjs 技术交流"></a>
