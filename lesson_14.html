@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>Ext.form.field.TimeView(xtype: timefield)-犸特头</title>
+	<!-- extjs -->
+	<link rel="stylesheet" type="text/css" href="../ext-4.2.1.883/resources/css/ext-all-neptune.css">
+	<!--<script type="text/javascript" src="../extjs/ext-all.js"></script>-->
+	<script type="text/javascript" src="../ext-4.2.1.883/ext-all-debug-w-comments.js"></script>
+	<script type="text/javascript" src="../ext-4.2.1.883/locale/ext-lang-zh_CN.js"></script>
+	<style type="text/css" >
+	body{padding-left:5px;}
+	</style>
+</head>
+<body>
+	<script  type="text/javascript">
+
+		// 1、 步骤导入库文件
+		Ext.require([
+			'Ext.form.*',
+		]);
+
+		Ext.onReady(function() {
+
+			Ext.create('Ext.form.Panel', {
+				title: '考勤卡',
+				width: 300,
+				bodyPadding: 10,
+				renderTo: Ext.getBody(),
+				items: [{
+					xtype: 'timefield',
+					name: 'in',
+					fieldLabel: '上班时间',
+					minValue: '06:00', // 注意 使用 24 h 
+					maxValue: '10:00',
+					increment: 30,
+					anchor: '100%'
+				}, {
+					xtype: 'timefield',
+					name: 'out',
+					fieldLabel: '下班时间',
+					minValue: '17:00',
+					maxValue: '19:00',
+					increment: 30,
+					anchor: '100%'
+			   }]
+			});
+		});
+
+	</script>
+
+	<a href="../ext-4.2.1.883/docs/index.html#!/api/Ext.form.field.Time"  target="_blank"><h3>doc</h3></a>
+
+	<a href="http://blog.mttqq.com"  target="_blank"><h3>犸特头-Extjs4更多学习</h3></a>
+	<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=f50865b2598688abcae47cca8ae48b5c1ea26a45194c640071eefdd7212d3a2e"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="extjs 技术交流" title="extjs 技术交流"></a>
+
+</body>
+</html>
