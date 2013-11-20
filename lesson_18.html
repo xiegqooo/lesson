@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>Ext.form.Panel(复选框组)-犸特头</title>
+	<!-- extjs -->
+	<link rel="stylesheet" type="text/css" href="../ext-4.2.1.883/resources/css/ext-all-neptune.css">
+	<!--<script type="text/javascript" src="../extjs/ext-all.js"></script>-->
+	<script type="text/javascript" src="../ext-4.2.1.883/ext-all-debug-w-comments.js"></script>
+	<script type="text/javascript" src="../ext-4.2.1.883/locale/ext-lang-zh_CN.js"></script>
+	<style type="text/css" >
+	body{padding-left:5px;}
+	</style>
+</head>
+<body>
+	<script  type="text/javascript">
+
+		// 1、 步骤导入库文件
+		Ext.require([
+			'Ext.form.*',
+			'Ext.direct.*'
+		]);
+		
+		Ext.onReady(function() {
+		
+			Ext.create('Ext.form.Panel', {
+				title: '兴趣爱好',
+				width: 300,
+				//height: 125,
+				bodyPadding: 10,
+				renderTo: Ext.getBody(),
+				items:[{
+					xtype: 'checkboxgroup',
+					fieldLabel: '选择多项',
+					// 安排复选框分成两列,分布式垂直
+					//  可以设置多一排显示 
+					columns: 2,
+					vertical: true,
+					items: [
+						{ boxLabel: '看书', name: 'rb', inputValue: '1' },
+						{ boxLabel: '上网', name: 'rb', inputValue: '2', checked: true },
+						{ boxLabel: '打蓝球', name: 'rb', inputValue: '3' },
+						{ boxLabel: '滑冰', name: 'rb', inputValue: '4' },
+						{ boxLabel: '乒乓球', name: 'rb', inputValue: '5' },
+						{ boxLabel: '滑雪', name: 'rb', inputValue: '6' }
+					]
+				}]
+			});
+		});
+
+	</script>
+
+	<a href="../ext-4.2.1.883/docs/index.html#!/api/Ext.form.CheckboxGroup"  target="_blank"><h3>doc</h3></a>
+
+	<a href="http://blog.mttqq.com"  target="_blank"><h3>犸特头-Extjs4更多学习</h3></a>
+	<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=f50865b2598688abcae47cca8ae48b5c1ea26a45194c640071eefdd7212d3a2e"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="extjs 技术交流" title="extjs 技术交流"></a>
+
+</body>
+</html>
