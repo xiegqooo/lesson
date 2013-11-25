@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>Ext.form.Panel(字段集)-犸特头</title>
+	<!-- extjs -->
+	<link rel="stylesheet" type="text/css" href="../ext-4.2.1.883/resources/css/ext-all-neptune.css">
+	<!--<script type="text/javascript" src="../extjs/ext-all.js"></script>-->
+	<script type="text/javascript" src="../ext-4.2.1.883/ext-all-debug-w-comments.js"></script>
+	<script type="text/javascript" src="../ext-4.2.1.883/locale/ext-lang-zh_CN.js"></script>
+	<style type="text/css" >
+	body{padding-left:5px;}
+	</style>
+</head>
+<body>
+	<script  type="text/javascript">
+
+		// 1、 步骤导入库文件
+		Ext.require([
+			'Ext.form.*',
+			'Ext.direct.*'
+		]);
+		
+		// 2、加载运行
+		Ext.onReady(function() {
+		
+			Ext.create('Ext.form.Panel', {
+				title: '简单的字段集',			
+				url: 'save-form.php',
+				frame: true,
+				bodyStyle: 'padding:5px 5px 0',
+				width: 550,
+				renderTo: Ext.getBody(),				
+				items: [{
+					// 折叠通过切换按钮字段集
+					xtype:'fieldset',
+					title: '字段集',
+					collapsible: true,
+					defaultType: 'textfield',					
+					defaults: {anchor: '100%',labelWidth: 40},
+					layout: 'anchor',
+					items :[{
+						fieldLabel: '字段1',
+						name: 'field1'
+					}, {
+						fieldLabel: '字段2',
+						name: 'field2'
+					}]
+				}, {
+					// 通过复选框可折叠，折叠在默认情况下，包含一个面板
+					xtype:'fieldset',
+					title: '点击显示', // 标题或checkboxtoggle创建字段集标题					
+					checkboxToggle: true, // 开启 checkboxtoggle 显示
+					collapsed: true, // fieldset 最初隐藏
+					layout:'anchor',
+					items :[{
+						xtype: 'panel',
+						anchor: '100%',
+						title: '字段集中的panel',
+						frame: true,
+						height: 52
+					}]
+				}]
+			});
+			
+		});
+
+	</script>
+
+	<a href="../ext-4.2.1.883/docs/index.html#!/api/Ext.form.FieldSet"  target="_blank"><h3>doc</h3></a>
+
+	<a href="http://blog.mttqq.com"  target="_blank"><h3>犸特头-Extjs4更多学习</h3></a>
+	<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=f50865b2598688abcae47cca8ae48b5c1ea26a45194c640071eefdd7212d3a2e"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="extjs 技术交流" title="extjs 技术交流"></a>
+
+</body>
+</html>
