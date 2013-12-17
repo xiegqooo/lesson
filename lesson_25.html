@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>Ext.container.ButtonGroup-犸特头</title>
+	<!-- extjs -->
+	<link rel="stylesheet" type="text/css" href="../ext-4.2.1.883/resources/css/ext-all-neptune.css">
+	<!--<script type="text/javascript" src="../extjs/ext-all.js"></script>-->
+	<script type="text/javascript" src="../ext-4.2.1.883/ext-all-debug-w-comments.js"></script>
+	<script type="text/javascript" src="../ext-4.2.1.883/locale/ext-lang-zh_CN.js"></script>
+	<style type="text/css" >
+	body{padding-left:5px;}
+	.add{ background-image: url(../ext-4.2.1.883/examples/menu/images/add.gif) !important;}
+	.add16{ background-image: url(../ext-4.2.1.883/examples/menu/images/add16.gif) !important;}
+	</style>
+</head>
+<body>
+	<script  type="text/javascript">
+		// 设置模块路径
+
+		
+		// 设置项目
+		Ext.application({
+			name: 'MyApp', // 项目名称					
+			//appFolder : 'app' // 项目文件 。默认值为 app 		
+			launch: function() {
+			
+			   Ext.create('Ext.panel.Panel', {
+				title: '几种ButtonGroup组合',
+				width: 320,
+				height:220,
+				//renderTo: document.body,
+				renderTo: 'chart',
+				bodyPadding: 10,
+				html: 'HTML Panel Content',
+				tbar: [{
+					xtype: 'buttongroup',
+					columns: 3,
+					title: '笔记板',
+					items: [{
+						text: '粘贴',
+						scale: 'large',
+						rowspan: 3,
+						iconCls: 'add',
+						iconAlign: 'top',
+						cls: 'btn-as-arrow'
+					},{
+						xtype:'splitbutton',
+						text: '菜单',
+						scale: 'large',
+						rowspan: 3,
+						iconCls: 'add',
+						iconAlign: 'top',
+						arrowAlign:'bottom',
+						menu: [{ text: '菜单1' }]
+					},{
+						xtype:'splitbutton', text: '剪切', iconCls: 'add16', menu: [{text: '剪切项'}]
+					},{
+						text: '复制', iconCls: 'add16'
+					},{
+						text: '格式', iconCls: 'add16'
+					}]
+				}]
+			});
+			
+			}
+		});
+
+	</script>
+
+	<div id="chart"></div>
+	
+	<a href="../ext-4.2.1.883/docs/index.html#!/api/Ext.container.ButtonGroup"  target="_blank"><h3>ButtonGroup</h3></a>
+
+	<a href="http://blog.mttqq.com"  target="_blank"><h3>犸特头-Extjs4更多学习</h3></a>
+	<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=f50865b2598688abcae47cca8ae48b5c1ea26a45194c640071eefdd7212d3a2e"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="extjs 技术交流" title="extjs 技术交流"></a>
+
+</body>
+</html>

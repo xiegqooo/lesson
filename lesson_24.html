@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>Ext.chart.Chart-犸特头</title>
+	<!-- extjs -->
+	<link rel="stylesheet" type="text/css" href="../ext-4.2.1.883/resources/css/ext-all-neptune.css">
+	<!--<script type="text/javascript" src="../extjs/ext-all.js"></script>-->
+	<script type="text/javascript" src="../ext-4.2.1.883/ext-all-debug-w-comments.js"></script>
+	<script type="text/javascript" src="../ext-4.2.1.883/locale/ext-lang-zh_CN.js"></script>
+	<style type="text/css" >
+	body{padding-left:5px;}
+	.view-text{ background-image: url(../ext-4.2.1.883/examples/shared/icons/fam/grid.png) !important;}
+	.view-html{ background-image: url(../ext-4.2.1.883/examples/shared/icons/fam/plugin.gif) !important;}
+	</style>
+</head>
+<body>
+	<script  type="text/javascript">
+		// 设置模块路径
+
+		
+		// 设置项目
+		Ext.application({
+			name: 'MyApp', // 项目名称					
+			//appFolder : 'app' // 项目文件 。默认值为 app 		
+			launch: function() {
+			
+			    // 定义数据结构
+				Ext.define('WeatherPoint', {
+					extend: 'Ext.data.Model',
+					fields: ['temperature', 'date']
+				});
+				
+				// 定义数据体
+				var store = Ext.create('Ext.data.Store', {
+					model: 'WeatherPoint',
+					data: [
+						{ temperature: 58, date: new Date(2013,  1, 8) },
+						{ temperature: 63, date: new Date(2013,  1, 9) },
+						{ temperature: 73, date: new Date(2013,  1, 10) },
+						{ temperature: 78, date: new Date(2013,  1, 11) },
+						{ temperature: 81, date: new Date(2013,  1, 12) }
+					]
+				});
+				
+				// 显示
+				Ext.create('Ext.chart.Chart', {
+				  // renderTo: Ext.getBody(),
+				   renderTo: 'chart',
+				   width: 400,
+				   theme: 'Green',
+				   legend: {
+						position: 'top'
+					},
+				   height: 300,
+				   axes: [{
+						title: '温度',
+						type: 'Numeric',
+						position: 'left',
+						fields: ['temperature'],
+						grid: {
+							odd: {
+								opacity: 1,
+								fill: '#ddd',
+								stroke: '#bbb',
+								'stroke-width': 1
+							}
+						}, 
+						label: {
+							renderer: Ext.util.Format.numberRenderer('0','0')
+						},
+						minimum: 0,
+						maximum: 100
+					},
+					{
+						title: '时间',
+						type: 'Time',  // Category , Numeric , Time
+						position: 'bottom', // top ,left , bottom ， right
+						fields: ['date'],
+						grid:true,
+						dateFormat: 'ga'
+				   }],
+				  series: [{
+							type: 'line', // 填充 area 、line 、 bar 、Cartesian 、 column 、gauge  、pie 、radar 、scatter 、 
+							highlight : false,
+							tips: {
+							  trackMouse: true,
+							  width: 140,
+							  height: 28,
+							  renderer: function(storeItem, item) {
+								this.setTitle(storeItem.get('name') + ': ' + storeItem.get('data') + ' views');
+							  }
+							},
+							xField: 'date',
+							yField: 'temperature'
+				   }],
+				   store: store
+				});
+			
+			}
+		});
+
+	</script>
+
+	<div id="chart"></div>
+	
+	<a href="../ext-4.2.1.883/docs/index.html#!/api/Ext.chart.Chart"  target="_blank"><h3>Chart</h3></a>
+
+	<a href="http://blog.mttqq.com"  target="_blank"><h3>犸特头-Extjs4更多学习</h3></a>
+	<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=f50865b2598688abcae47cca8ae48b5c1ea26a45194c640071eefdd7212d3a2e"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="extjs 技术交流" title="extjs 技术交流"></a>
+
+</body>
+</html>

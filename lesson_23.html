@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>button.Split和button.CycleView-犸特头</title>
+	<!-- extjs -->
+	<link rel="stylesheet" type="text/css" href="../ext-4.2.1.883/resources/css/ext-all-neptune.css">
+	<!--<script type="text/javascript" src="../extjs/ext-all.js"></script>-->
+	<script type="text/javascript" src="../ext-4.2.1.883/ext-all-debug-w-comments.js"></script>
+	<script type="text/javascript" src="../ext-4.2.1.883/locale/ext-lang-zh_CN.js"></script>
+	<style type="text/css" >
+	body{padding-left:5px;}
+	.view-text{ background-image: url(../ext-4.2.1.883/examples/shared/icons/fam/grid.png) !important;}
+	.view-html{ background-image: url(../ext-4.2.1.883/examples/shared/icons/fam/plugin.gif) !important;}
+	</style>
+</head>
+<body>
+	<script  type="text/javascript">
+		// 设置模块路径
+		// Ext.Loader.setPath('Module','js/module');
+		
+		// 设置项目
+		Ext.application({
+			name: 'MyApp', // 项目名称					
+			//appFolder : 'app' // 项目文件 。默认值为 app 		
+			/****
+			 *  MVC 指定 "模块" , "控制" , "数据" ,
+			 *  models: ['Post', 'Comment'],
+			 *  controllers: ['Posts', 'Comments'],
+			 *  stores: ['Users', 'Vehicles']
+			 *  导入文件
+			 * requires: [
+			 *	 'MyApp.store.Users',
+			 *	 'MyApp.store.Vehicles'
+			 * ]
+			 */
+			launch: function() {
+			
+				Ext.create('Ext.button.Cycle', {
+						showText: true,
+						prependText: '前缀', // 前置文本
+						//showText : false, // 不显示文字
+						renderTo: Ext.getBody(),
+						menu: {
+							id: 'view-type-menu',
+							items: [{
+								text: '<span style="color:red">text only</b>',
+								iconCls: 'view-text',
+								checked: true
+							},{
+								text: '<b>HTML</b>',
+								iconCls: 'view-html'
+							}]
+						},
+						changeHandler: function(cycleBtn, activeItem) {
+							//Ext.Msg.alert('切换', activeItem.text);
+						}
+				  });
+				  
+				  // 下拉菜单按钮
+				Ext.create('Ext.button.Split', {
+					renderTo: Ext.getBody(),
+					text: '下拉按钮',
+					// 点击事件 下拉按钮
+					handler: function() {
+						Ext.Msg.alert('点击操作',"您点击了下拉按钮");
+					},
+					menu: new Ext.menu.Menu({
+						items: [
+							// 菜单点击事件
+							{text: '苹果', handler: function(){ Ext.Msg.alert('点击操作',"您点击了<b>苹果</b>"); }},
+							{text: '桔子', handler: function(){ Ext.Msg.alert('点击操作',"您点击了<b>桔子</b>"); }}
+						]
+					})
+				});
+			}
+		});
+
+	</script>
+
+	<a href="../ext-4.2.1.883/docs/index.html#!/api/Ext.button.Cycle"  target="_blank"><h3>Cycle</h3></a>
+	<a href="../ext-4.2.1.883/docs/index.html#!/api/Ext.button.Cycle"  target="_blank"><h3>Split</h3></a>
+
+	<a href="http://blog.mttqq.com"  target="_blank"><h3>犸特头-Extjs4更多学习</h3></a>
+	<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=f50865b2598688abcae47cca8ae48b5c1ea26a45194c640071eefdd7212d3a2e"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="extjs 技术交流" title="extjs 技术交流"></a>
+
+</body>
+</html>
