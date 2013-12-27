@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>Ext.dd.DD-犸特头</title>
+	<!-- extjs -->
+	<link rel="stylesheet" type="text/css" href="../ext-4.2.1.883/resources/css/ext-all-neptune.css">
+	<!--<script type="text/javascript" src="../extjs/ext-all.js"></script>-->
+	<script type="text/javascript" src="../ext-4.2.1.883/ext-all-debug-w-comments.js"></script>
+	<script type="text/javascript" src="../ext-4.2.1.883/locale/ext-lang-zh_CN.js"></script>
+	<style type="text/css" >
+	body{padding-left:5px;}
+	h3{padding:none;margin:none;}
+	.add{ background-image: url(../ext-4.2.1.883/examples/menu/images/add.gif) !important;}
+	.add16{ background-image: url(../ext-4.2.1.883/examples/menu/images/add16.gif) !important;}
+	
+	.block {
+		border: 1px red solid;                     
+		height:80px;
+		margin-top:50px;
+		padding:20px 0 0 20px;
+		clear:both;
+	}
+	.item {
+		border: 1px #000 solid; 
+		margin-right:10px;                                   
+		width: 60px;
+		height: 40px; 
+		text-align:center;
+		padding-top:20px;
+		color:White;      
+		float:left;
+		cursor:pointer;
+	}
+	</style>
+</head>
+<body>
+	<script  type="text/javascript">
+		// 设置项目
+		Ext.application({
+			name: 'MyApp', // 项目名称					
+			//appFolder : 'app' // 项目文件 。默认值为 app 		
+			launch: function() {
+				
+				/*
+				 var dd = new Ext.dd.DD('proxy', { group: 'target' }); 
+				 
+				 dd.onDragDrop = function(e, id) {
+					alert("dd was dropped on " + id);
+				} 
+				
+				Ext.get("proxy").initDDProxy("proxy", {dragElId: "target"}, {
+					  startDrag : function(){
+						 this.constrainTo("target");
+					 }
+				 });*/
+				
+				
+				new Ext.dd.DDProxy('proxy');
+				//(ExtJs的拖动组件分二大类，DDProxy就是要拖动的东西，而DDTarget就是拖动后可以扔进去的目标容器区)
+
+				//以下建立了三个拖动源DropSource(继承自DDProxy可以查看官方文档)，并标明gruop为dd
+				var proxy_red = new Ext.dd.DragSource('proxy_red', { group: 'dd' });
+				var proxy_green = new Ext.dd.DragSource('proxy_green', { group: 'dd' });
+				var proxy_black = new Ext.dd.DragSource('proxy_black', { group: 'dd' });
+				
+				// 拖放过程成功了就执行该方法e
+				proxy_red.onDragDrop = function(e, id) {
+						// 建立置下目标的Ext.Element实例
+						var dropEl = Ext.get(id);
+					 
+						// 不在同一drop区域里面的才算完成drop。同一个target目标没意义。
+						if (this.el.dom.parentNode.id != id) {
+					 
+							// 移动元素
+							dropEl.appendChild(this.el);
+					 
+							// Remove the drag invitation
+							this.onDragOut(e, id);
+					 
+							// 清除样式
+							this.el.dom.style.position ='';
+							this.el.dom.style.top = '';
+							this.el.dom.style.left = '';
+						}
+						else {
+							// 无效的drop
+							this.onInvalidDrop();
+						}
+				}
+				
+				//  拖动进事件
+				proxy_red.onDragEnter = function(e, id) {
+				
+
+						
+					    // 添加CSS颜色
+						if (id != this.el.dom.parentNode.id) {
+							this.el.addClass('dropOK');
+						}
+						else {
+							// 移除邀请
+							this.onDragOut();
+						}
+						
+
+					this.proxy.setStatus(this.dropAllowed);
+					console.log(this.dropAllowed);
+	
+				}
+				
+				//  拖动出事件
+				proxy_red.onDragOut = function(e, id) {
+					//this.proxy.reset();	
+					if (this.beforeDragOut(target, e, id) !== false) {
+						this.proxy.reset();
+					}
+				}
+				
+				//拖动完成的事件
+				proxy_red.afterDragDrop = function(target, e, id) {
+								
+					var destEl = Ext.get(id);
+					var srcEl = Ext.get(this.getEl());
+					var sColor = srcEl.dom.id.split('_')[1]; //得取拖动源id的后面一部分，即proxy_red后面的red
+					destEl.dom.style.backgroundColor = sColor; //设置目标id的背景色
+				};
+				
+				var target = new Ext.dd.DDTarget('target', 'dd'); //建立拖动目标区(这里的dd与上面拖动源的group:dd相同 //这一句就可以建立一个随便拖的东东，神奇吧
+				//只有相同group的DDProxy/DragSource才会接受)
+				
+			    proxy_green.afterDragDrop = proxy_red.afterDragDrop; //为其它拖动源赋值同样的事件处理函数
+				proxy_black.afterDragDrop = proxy_red.afterDragDrop;
+
+
+			}
+		});
+
+	</script>
+
+	
+	<div>
+		<div id="proxy_red" class="item" style="background:red">Red</div>       
+		<div id="proxy_green" class="item" style="background:green">Green</div>     
+		<div id="proxy_black" class="item" style="background:black">Black</div>   
+		<div id="proxy" class="item" style="color:yellow;">我可以<br/>随便拖</div> 
+	</div> 
+	<div id="target" class="block">把上面有颜色的色块拖到我这里试试</div>
+	
+	
+	<a href="../ext-4.2.1.883/docs/index.html#!/api/Ext.dd.DDTarget"  target="_blank"><h3>DDTarget</h3></a>
+	<a href="http://blog.mttqq.com"  target="_blank"><h3>犸特头-Extjs4更多学习</h3></a>
+	<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=f50865b2598688abcae47cca8ae48b5c1ea26a45194c640071eefdd7212d3a2e"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="extjs 技术交流" title="extjs 技术交流"></a>
+	
+</body>
+</html>
