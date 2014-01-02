@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-	<title>Ext.dom.CompositeElement-犸特头</title>
+	<title>Ext.dom.Query-犸特头</title>
 	<!-- extjs -->
 	<link rel="stylesheet" type="text/css" href="../ext-4.2.1.883/resources/css/ext-all-neptune.css">
 	<!--<script type="text/javascript" src="../extjs/ext-all.js"></script>-->
@@ -40,58 +40,38 @@
 			name: 'MyApp', // 项目名称					
 			//appFolder : 'app' // 项目文件 。默认值为 app 		
 			launch: function() {
-								 
-				 // Ext.fx.Anim
-				 var _in_ = {
-					duration: 1000,
-					easing: 'easeIn',
-					//easing: 'easeOut',
-					//callback: this.foo,
-					scope: this
-				};
-				 var _out_ = {
-					duration: 1000,
-					//easing: 'easeIn',
-					easing: 'easeOut',
-					//callback: this.foo,
-					scope: this
-				};
+				// 
+				// 1. 元素选择器
+				// 2. 属性选择器
+				// 3. 伪类选择器
+				// 4. CSS选择器
+				// 
 				
-				 /*
-				 var el = Ext.get('some-el');
-				 el.select('div.item', true).setWidth(100,opt);
-				//*/
+				var t =  Ext.query('#some-el div.item');
+				console.log(t[0]);
 				
-				var current ;
-				var els = Ext.select("#some-el div.item", true);
-             	//els.setWidth(100,opt);
-				els.on({
-					  mouseover:   function() { 
-						current =  Ext.get(this);
-						current.setWidth(300,_in_);
-					  },
-					  mouseout:    function() { 
-						current =  Ext.get(this);
-						current.setWidth(100,_out_);	
-					  },
-				});
+				t =  Ext.dom.Query.select('#some-el div.item'); //返回所有 id='some-el' 下div的 class='item' 的 HTMLElement[]
+				console.log(t[0]);
 				
-				
-				//*/
-				 
+				t =  Ext.dom.Query.select('#some-el span');
+				console.log(t);
 			}
 		});
 
 	</script>
 
 	<div id="some-el">
-		<div class="item" style="background:green"></div> 
+		
 		<div class="item" style="background:red"></div> 
-		<div class="item" style="background:blue"></div> 
-		<div class="item" style="background:yellow"></div> 
+		<span>1</span>
+          <p>
+              <span>2</span>
+          </p>
+		
     </div>
+	<h3>打开控制台查看 log </h3>
 	
-	<a href="../ext-4.2.1.883/docs/index.html#!/api/Ext.dom.CompositeElement"  target="_blank"><h3>Ext.dom.CompositeElement</h3></a>
+	<a href="../ext-4.2.1.883/docs/index.html#!/api/Ext.dom.Query"  target="_blank"><h3>Query</h3></a>
 	<a href="http://blog.mttqq.com"  target="_blank"><h3>犸特头-Extjs4更多学习</h3></a>
 	<h3>Q群:311176787</h3>
 	<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=f50865b2598688abcae47cca8ae48b5c1ea26a45194c640071eefdd7212d3a2e"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="extjs 技术交流" title="extjs 技术交流"></a>
