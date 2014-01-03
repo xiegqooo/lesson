@@ -42,9 +42,64 @@
 			launch: function() {
 				// 
 				// 1. 元素选择器
+				
+				/* 
+					* 任何元素
+					E 用标签(E)元素
+					E F E，F所有后代元素标签
+					E > F or E/F 所有的直接子元素E，F的标签
+					E + F 用标签F，紧跟着一个元素的所有元素的标签
+					E ~ F 用标签F，前面有一个带标签的E的兄弟姐妹的所有元素
+				*/
+				
 				// 2. 属性选择器
+				
+				/* 
+					E[foo] 有一个属性“foo”
+					E[foo=bar] 有一个属性“foo”等于“bar”
+					E[foo^=bar] 有一个属性“foo”，从“bar”
+					E[foo$=bar] 有一个属性“foo”，结束“bar”
+					E[foo*=bar] 有一个属性“foo”包含子串的“bar”
+					E[foo%=2] 有一个属性“foo”，能被2整除
+					E[foo!=bar] 属性“foo”不等于“bar”
+				*/
+				
 				// 3. 伪类选择器
+				
+				/* 
+					E:first-child E是其父母的第一个孩子
+					E:last-child E是其父母的最后个孩子
+					E:nth-child(_n_) E是其父母的_n_th孩子（1基础按规格）
+					E:nth-child(odd)  与上面类似 返回奇数
+					E:nth-child(even) 与上面类似 返回偶数
+					E:only-child 返回父元素当中只有一个元素的E元素
+					E:checked 选中的元素(radio or checkbox)
+					E:first 返回匹配元素结果集中的第一个元素
+					E:last 返回匹配元素结果集中的最后一个元素
+					E:nth(_n_) 返回匹配元素结果集中的第N个元素
+					E:odd 与:nth-child(odd)相同
+					E:even 于:nth-child(even)相同
+					E:contains(foo) innerHTML 属性中包含foo的E元素
+					E:nodeValue(foo) 返回值包含一个文本元素,并且值为foo的 
+					E:not(S) 不等于
+					E:has(S) 表达式所匹配元素的
+					E:next(S) 并且其平级元素的下一个
+					E:prev(S) 并且其平级元素的上一个
+					E:any(S1|S2|S2) 或者的关系
+					E:visible(true) 匹配所有可见的
+				*/
+				
 				// 4. CSS选择器
+				
+				/* 
+					E{display=none} css value "display" 等于 "none"
+					E{display^=none} css value "display" that starts with "none"
+					E{display$=none} css value "display" that ends with "none"
+					E{display*=none} css value "display" 包含 "none"
+					E{display%=2} css value "display" 这是被2整除
+					E{display!=none} css value "display" 不等于 "none"
+				*/
+				
 				// 
 				
 				var t =  Ext.query('#some-el div.item');
