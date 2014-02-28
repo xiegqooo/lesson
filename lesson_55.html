@@ -41,7 +41,7 @@
 <body>
 	<script  type="text/javascript">
 	
-		var display_title = 'Ext.layout.container.VBox';
+		var display_title = 'Ext.layout.container.Table';
 	
 		document.title = display_title + '-犸特头';
 				
@@ -52,38 +52,37 @@
 			//appFolder : 'app' // 项目文件 。默认值为 app 		
 			launch: function() {
 			// begin
-
-			Ext.create('Ext.Panel', {
-				width: 500,
-				height: 400,
-				title: "VBox布局",
-				layout: {
-					type: 'vbox',
-					align: 'center'
-				},
-				//renderTo: document.body,
-				renderTo: 'display',
-				items: [{
-					xtype: 'panel',
-					title: '第一个内嵌面板',
-					width: 250,
-					flex: 2
-				},
-				{
-					xtype: 'panel',
-					title: '第二个内嵌面板',
-					width: 250,
-					flex: 4
-				},
-				{
-					xtype: 'panel',
-					title: '第三个内嵌面板',
-					width: '90%',
-					flex: 4
-				}]
-			});
 			
- 
+			
+			
+			Ext.create('Ext.panel.Panel', {
+				title: 'Table 布局',
+				width: 300,
+				height: 150,
+				layout: {
+					type: 'table',
+					// 总列数必须在这里指定
+					columns: 3
+				},
+				defaults: {
+					// 适用于每列载板
+					bodyStyle: 'padding:20px'
+				},
+				items: [{
+					html: '内容A ',
+					rowspan: 2
+				},{
+					html: '内容B',
+					colspan: 2
+				},{
+					html: '内容C',
+					cellCls: 'highlight'
+				},{
+					html: '内容D'
+				}],
+				//renderTo: Ext.getBody()
+				renderTo: 'display'
+			});
 				
 			// renderTo: 'display',
 			// renderTo: document.body,
