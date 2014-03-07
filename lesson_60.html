@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>犸特头</title>
+	
+	<!-- extjs -->
+	<link rel="stylesheet" type="text/css" href="../ext-4.2.1.883/resources/css/ext-all-neptune.css">
+	
+	<!--<script type="text/javascript" src="../extjs/ext-all.js"></script>-->
+	<script type="text/javascript" src="../ext-4.2.1.883/ext-all-debug-w-comments.js"></script>
+	<script type="text/javascript" src="../ext-4.2.1.883/locale/ext-lang-zh_CN.js"></script>
+	
+	<style type="text/css" >
+	body{padding: 20px  0  0 20px;}
+	h3{padding:none;margin:none;}
+	.add{ background-image: url(../ext-4.2.1.883/examples/menu/images/add.gif) !important;}
+	.add16{ background-image: url(../ext-4.2.1.883/examples/menu/images/add16.gif) !important;}
+	
+	.block {
+		border: 1px red solid;                     
+		height:80px;
+		margin-top:50px;
+		padding:20px 0 0 20px;
+		clear:both;
+	}
+	.item {
+		border: 1px #000 solid; 
+		margin-right:10px;                                   
+		width: 200px;
+		height: 40px; 
+		text-align:center;
+		padding-top:20px;
+		color:White;      
+		cursor:pointer;
+	}
+	
+	.my-body-class{backgroud-color:red;}
+	</style>
+</head>
+<body>
+	<script  type="text/javascript">
+	
+		var display_title = 'Ext.picker.Color';
+	
+		document.title = display_title + '-犸特头';
+				
+	
+		// 设置项目
+		Ext.application({
+			name: 'MyApp', // 项目名称					
+			//appFolder : 'app' // 项目文件 。默认值为 app 		
+			launch: function() {
+			// begin
+			
+			Ext.create('Ext.picker.Color', {
+				value: 'CCFFCC',  // 选定的颜色
+				renderTo: 'display',
+				//width : 300,
+				//colors:['000000', '993300', '333300'], //  定置颜色
+				listeners: {
+					select: function(picker, selColor) {
+						
+						var cs = Ext.getDom('color');
+						//background-color: #FF0000;
+						cs.style.background='#'+selColor;
+						console.log(selColor);
+						
+					}
+				}
+			});
+				
+			// renderTo: 'display',
+			// renderTo: document.body,
+			// end 	
+			}
+		});
+
+	</script>
+
+	<div id="display">
+		
+		
+    </div>
+	<br/>
+	<div id="color" style="width:200px;height:150px;background:#CCFFCC;line-height: 150px;" align="center">
+			<h3>效果</h3>
+    </div>
+	
+	<a id  = "display_a" href="#"  target="_blank"><h3 id="display_h3">-</h3></a>
+	<a href="http://blog.mttqq.com"  target="_blank"><h3>犸特头-Extjs4更多学习</h3></a>
+	<h3>Q群:311176787</h3>
+	<a target="_blank" href="http://wp.qq.com/wpa/qunwpa?idkey=f50865b2598688abcae47cca8ae48b5c1ea26a45194c640071eefdd7212d3a2e"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="extjs 技术交流" title="extjs 技术交流"></a>
+	
+	<script  type="text/javascript">
+	document.getElementById("display_h3").innerHTML = display_title;
+	document.getElementById("display_a").href = '../ext-4.2.1.883/docs/index.html#!/api/'+display_title;
+	</script>
+</body>
+</html>
